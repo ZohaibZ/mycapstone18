@@ -6,15 +6,15 @@ from application.forms import *
 
 application.secret_key = 'Capstone2018'
 
-@app.route('/index.html')
-@app.route('/')
+@application.route('/index.html')
+@application.route('/')
 def index():
     engine = create_engine('mysql+pymysql://Capstone2018:capstonehelp@capstone2018.cffs7lx8bqq2.us-east-1.rds.amazonaws.com:3306/Capstone2018', convert_unicode=True)
     connection = engine.connect()
 
     return render_template('index.html')
 
-@app.route('/pages/<folder>/<page>')
+@application.route('/pages/<folder>/<page>')
 def pages(folder,page):
     X = 'pages/{}/{}'.format(folder,page)
     print(X)
@@ -22,4 +22,4 @@ def pages(folder,page):
 
 if __name__== '__main__':
 # here is starting of the development HTTP server
-    app.run(debug=True)
+    application.run(debug=True)
